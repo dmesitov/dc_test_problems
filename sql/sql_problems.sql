@@ -50,7 +50,7 @@ from (
                 vendor_name,
                 row_number()   over (partition by order_month order by orders desc) as vendor_rank
          from (
-                  select v.vendor_name                     as vendor_name,
+                  select distinct v.vendor_name                     as vendor_name,
                          date_trunc('month', o.order_date) as order_month,
                          count(distinct order_id)          as orders
 
